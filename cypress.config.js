@@ -1,4 +1,6 @@
-import { defineConfig } from "cypress";
+const { defineConfig } = require('cypress')
+const { initPlugin } = require('cypress-plugin-snapshots/plugin');
+//let percyHealthCheck = require('@percy/cypress/task')
 
 module.exports = defineConfig({
   viewportHeight: 900, //1080,//1440,
