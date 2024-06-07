@@ -5,7 +5,7 @@ const { initPlugin } = require('cypress-plugin-snapshots/plugin');
 module.exports = defineConfig({
   viewportHeight: 900, //1080,//1440,
   viewportWidth: 1440, //1920,//2560,
-  // video: false,
+  video: true,
   defaultCommandTimeout: 10000,
   experimentalWebKitSupport: true,
   env: {

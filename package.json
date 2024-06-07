@@ -106,6 +106,7 @@
     "@angular/compiler-cli": "^8.0.0",
     "@angular/language-service": "8.0.0",
     "@compodoc/compodoc": "^1.1.11",
+    "@cypress/snapshot": "^2.1.7",
     "@fortawesome/fontawesome-free": "^5.2.0",
     "@types/d3-color": "1.0.5",
     "@types/geojson": "7946.0.8",

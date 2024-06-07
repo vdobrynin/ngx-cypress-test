@@ -4,8 +4,8 @@ function selectGroupMenuItem(groupMenu) {
     cy.contains('a', groupMenu).then(menu => {
 
         cy.wrap(menu).find('.expand-state g g').invoke('attr', 'data-name').then(attr => {
-            if (attr.includes('left')) {
-                cy.wrap(menu).click()
+            if (attr.includes('chevron-left')) {
+                cy.wrap(menu).click({ force: true })
             }
         })
     })
