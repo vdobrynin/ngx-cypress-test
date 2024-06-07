@@ -29,7 +29,7 @@
     "docs:serve": "compodoc -p src/tsconfig.app.json -d docs -s",
     "prepush": "npm run lint:ci",
     "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
-    "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points --tsconfig \"./src/tsconfig.app.json\"""cy:verify": "cypress verify",
+    "cy:verify": "cypress verify",
     "cy:run_chrome": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --browser chrome",
     "cy:run_spec_old": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --headless",
     "cy:run": "npx cypress run --headless --record --key 1f689815-27e0-4704-ba3f-a229cbbbc527 --parallel",
