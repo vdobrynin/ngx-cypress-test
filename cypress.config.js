@@ -6,16 +6,25 @@ module.exports = defineConfig({
   // video: false,
   defaultCommandTimeout: 10000,
   experimentalWebKitSupport: true,
+  env: {
+    'cypress-plugin-snapshots': {
+      imageConfig: {
+        threshold: 0.01,
+      },
+    },
+  },
   e2e: {
     baseUrl: "http://localhost:4200",
     excludeSpecPattern: [
-      "**/examples/*",
+      '**/1-getting-started',
+      '**/2-advanced-examples',
       "**/__snapshots__/*",
       "**/__image_snapshots__/*"
     ],
     specPattern: "cypress/integration/**/*.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      initPlugin(on, config);
+      //on("task", percyHealthCheck);
     },
   },
   includeShadowDom: true,
