@@ -29,11 +29,12 @@
     "docs:serve": "compodoc -p src/tsconfig.app.json -d docs -s",
     "prepush": "npm run lint:ci",
     "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
+    "cy:run:verify": "cypress verify",
     "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points --tsconfig \"./src/tsconfig.app.json\"""cy:verify": "cypress verify",
     "cy:run_chrome": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --browser chrome",
     "cy:run_spec_old": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --headless",
-    "cy:run_spec": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --headless --record --key 1f689815-27e0-4704-ba3f-a229cbbbc527",
     "cy:run": "npx cypress run --headless --record --key 1f689815-27e0-4704-ba3f-a229cbbbc527 --parallel",
+    "cy:run_spec": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --headless --record --key 1f689815-27e0-4704-ba3f-a229cbbbc527",
     "cy:run_parallel": "npm run cy:run & npm run cy:run",
     "cy:run_firefox_1": "npx cypress run -s 'cypress/integration/testWithPageObjects.spec.js' --browser firefox",
     "cy:run_firefox_2": "npx cypress run -s 'cypress/integration/testWithPageObjects.spec.js' --browser firefox  --headed",
@@ -45,7 +46,11 @@
     "cy:run_parallel_2browsers_old": "npm run cy:run_spec --spec --browser firefox --group Firefox --ci-build-id 1 & npm run cy:run_spec --spec --browser --chrome --group Chrome --ci-build-id 1",
     "cy:run_parallel_2browsers": "npm run cy:run_spec --spec --browser firefox --group Firefox --ci-build-id $ID & npm run cy:run_spec --spec --browser --chrome --group Chrome --ci-build-id $ID",
     "cy:run_group": "ID=$(uuid) npm run cy:run_browsers",
-    "cypress:e2e": "server-test start http-get://localhost:4200 cy:run"
+    "cypress:e2e": "server-test start http-get://localhost:4200 cy:run",
+    "cy:run2_old": "npx cypress run --headless --record --key xxx --parallel --ci-build-id 1",
+    "cy:run2": "npx cypress run --headless --record --key xxx --parallel --ci-build-id $ID",
+    "cy:run_p": "npm run cy:run2 & npm run cy:run2",
+    "cy:run_b": "ID=$(uuid) npm run cy:run_p"
   },
   "dependencies": {
     "@agm/core": "^1.1.0",
