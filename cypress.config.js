@@ -26,7 +26,6 @@ module.exports = defineConfig({
     specPattern: "cypress/integration/**/*.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
       initPlugin(on, config);
-      on("task", percyHealthCheck);
     },
   },
   includeShadowDom: true,

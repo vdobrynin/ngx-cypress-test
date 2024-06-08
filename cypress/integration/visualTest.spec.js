@@ -17,7 +17,7 @@ describe('visual test', () => {
         cy.contains('Form Layouts').click()
 
         cy.contains('nb-card', 'Using the Grid').then(firstForm => {
-            cy.wait(500)
+            cy.wait(5000)
             cy.percySnapshot('FormLayouts')
         })
     })
