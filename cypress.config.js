@@ -1,11 +1,11 @@
 const { defineConfig } = require('cypress')
 const { initPlugin } = require('cypress-plugin-snapshots/plugin');
-//let percyHealthCheck = require('@percy/cypress/task')
 
 module.exports = defineConfig({
   viewportHeight: 900, //1080,//1440,
   viewportWidth: 1440, //1920,//2560,
-  video: true,
+  // screenshotOnRunFailure: true,
+  video: false,
   defaultCommandTimeout: 10000,
   experimentalWebKitSupport: true,
   env: {
@@ -26,7 +26,7 @@ module.exports = defineConfig({
     specPattern: "cypress/integration/**/*.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
       initPlugin(on, config);
-      //on("task", percyHealthCheck);
+      on("task", percyHealthCheck);
     },
   },
   includeShadowDom: true,

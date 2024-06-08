@@ -17,8 +17,6 @@
 import './commands'
 import 'cypress-plugin-snapshots/commands';
 import '@percy/cypress';
-import { isPercyEnabled } from "@percy/sdk-utils";
-isPercyEnabled();
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
