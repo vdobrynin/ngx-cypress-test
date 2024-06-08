@@ -1,7 +1,7 @@
 
 describe('visual test', () => {
 
-    it.only('should test snapshot', () => {
+    it('should test snapshot', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
@@ -12,7 +12,7 @@ describe('visual test', () => {
         })
     })
 
-    it('should test with Percy', () => {
+    it.only('should test with Percy', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
