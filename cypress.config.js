@@ -4,9 +4,11 @@ const { initPlugin } = require('cypress-plugin-snapshots/plugin');
 module.exports = defineConfig({
   viewportHeight: 900, //1080,//1440,
   viewportWidth: 1440, //1920,//2560,
-  // screenshotOnRunFailure: true,
+  screenshotOnRunFailure: false,
   video: false,
   defaultCommandTimeout: 10000,
+  pageLoadTimeout: 10000,
+  waitForAnimations: true,
   experimentalWebKitSupport: true,
   env: {
     'cypress-plugin-snapshots': {
@@ -25,7 +27,8 @@ module.exports = defineConfig({
     ],
     specPattern: "cypress/integration/**/*.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
-      initPlugin(on, config);
+      // initPlugin(on, config);
+      return require('./cypress/plugins/index.js')(on, config);
     },
   },
   includeShadowDom: true,
