@@ -4,8 +4,7 @@ const { property } = require("lodash")
 
 describe('first test suite', () => {
 
-    it('first test', () => {
-
+    it.only('first test', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
@@ -14,31 +13,31 @@ describe('first test suite', () => {
         cy.get('input')
 
         // by ID
-        cy.get('#inputEmail1')
+        cy.get('#inputEmail1')              // # for id  
 
         // by Class Value
-        cy.get('.input-full-width')
+        cy.get('.input-full-width')         // . for class value
 
         // by Attribute Name
-        cy.get('[fullwidth]')
+        cy.get('[fullwidth]')               // [name] for attribute  
 
         // by Attribute and Value
-        cy.get('[placeholder="Email"]')
+        cy.get('[placeholder="Email"]')     // [name + value] for attribute 
 
-        // by entire Class Value
+        // by Entire Class Value
         cy.get('[class="input-full-width size-medium shape-rectangle"]')
 
         // by Two Attributes
-        cy.get('[placeholder="Email"][fullwidth]')
+        cy.get('[placeholder="Email"][fullwidth]')          // 2 attributes
 
         // by Tag Name and Attribute with value
-        cy.get('input[placeholder="Email"]')
+        cy.get('input[placeholder="Email"]')                // tag + attribute w/value
 
         // by Tag Name, Attribute with Value, ID and Class Name
         cy.get('input[placeholder="Email"]#inputEmail1.input-full-width')
 
         // by cypress test ID --> The Most Recommended 
-        cy.get('[data-cy="imputEmail1"]')
+        cy.get('[data-cy="imputEmail1"]')                   // typo by creator
     })
 
     it('second test', () => {
