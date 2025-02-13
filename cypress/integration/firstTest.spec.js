@@ -63,34 +63,34 @@ describe('first test suite', () => {
             .should('contain', 'Sign in')
             .parents('form')
             .find('nb-checkbox')
-            .click()           //--> if finish with action method (as click or type), next in new chain start with cy. 
+            .click()   //--> if finish with action method (as click or type), next in new chain start with cy. 
     })
 
-    it.only('alias & then & wrap methods', () => {
-
+    // it.only('alias & then & wrap methods', () => {
+    it.only('save subject of the command', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
 
-        cy.contains('nb-card', 'Using the Grid').find('[for="inputEmail1"]').should('contain', 'Email')
-        cy.contains('nb-card', 'Using the Grid').find('[for="inputPassword2"]').should('contain', 'Password')
-        cy.contains('nb-card', 'Basic form').find('[for="exampleInputEmail1"]').should('contain', 'Email address')
-        cy.contains('nb-card', 'Basic form').find('[for="exampleInputPassword1"]').should('contain', 'Password')
+        // cy.contains('nb-card', 'Using the Grid').find('[for="inputEmail1"]').should('contain', 'Email')
+        // cy.contains('nb-card', 'Using the Grid').find('[for="inputPassword2"]').should('contain', 'Password')
+        // // cy.contains('nb-card', 'Basic form').find('[for="exampleInputEmail1"]').should('contain', 'Email address')
+        // // cy.contains('nb-card', 'Basic form').find('[for="exampleInputPassword1"]').should('contain', 'Password')
 
-        //--->                                 //---> CAN'T DO THINGS LIKE THIS below 
+        //--->                                 //---> CAN'T DO THINGS LIKE THIS below
         // const firstForm = cy.contains('nb-card', 'Using the Grid')
-        // const secondForm = cy.contains('nb-card', 'Basic form')
+        // // const secondForm = cy.contains('nb-card', 'Basic form')
         // firstForm.find('[for="inputEmail1"]').should('contain', 'Email')
         // firstForm.find('[for="inputPassword2"]').should('contain', 'Password')
         // secondForm.find('[for="exampleInputEmail1"]').should('contain', 'Email address')
         // secondForm.find('[for="exampleInputPassword1"]').should('contain', 'Password')
 
-        // ---> 1st. cypress alias style
-        cy.contains('nb-card', 'Using the Grid').as('usingTheGrid')
-        cy.get('@usingTheGrid').find('[for="inputEmail1"]').should('contain', 'Email')
-        cy.get('@usingTheGrid').find('[for="inputPassword2"]').should('contain', 'Password')
+        // // ---> 1st. cypress alias style --> correct one (use @ for alias)
+        // cy.contains('nb-card', 'Using the Grid').as('usingTheGrid')
+        // cy.get('@usingTheGrid').find('[for="inputEmail1"]').should('contain', 'Email')
+        // cy.get('@usingTheGrid').find('[for="inputPassword2"]').should('contain', 'Password')
 
-        // ---> 2nd. cypress then() method
+        // // ---> 2nd. cypress then() method --> correct two (use wrap method)
         cy.contains('nb-card', 'Using the Grid').then(usingTheGridForm => {
             cy.wrap(usingTheGridForm).find('[for="inputEmail1"]').should('contain', 'Email')
             cy.wrap(usingTheGridForm).find('[for="inputPassword2"]').should('contain', 'Password')
