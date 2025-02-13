@@ -4,7 +4,7 @@ const { property } = require("lodash")
 
 describe('first test suite', () => {
 
-    it.only('first test', () => {
+    it('first test', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
@@ -41,7 +41,6 @@ describe('first test suite', () => {
     })
 
     it('second test', () => {
-
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
@@ -50,11 +49,12 @@ describe('first test suite', () => {
         // get() - find elements on the page by locator globally
         // find() - find child elements by locator
         // contains() - find HTML text & by by text & locator
-        cy.contains('Sign in')                          // ---> cy. are looking for the first much of "Sign in"
-        cy.contains('[status="warning"]', 'Sign in')                //--> to find 2nd locator of "Sign in"
-        cy.contains('nb-card', 'Horizontal form').find('button')    //--> find 2nd locator of "Sign in"
+        cy.contains('Sign in')                   // ---> cy. are looking for the first much of "Sign in"
+        cy.contains('[status="warning"]', 'Sign in')       //--> to find 2nd locator of "Sign in"
+        cy.contains('nb-card', 'Horizontal form').find('button')  //-->find 2nd locator of "Sign in"
         cy.contains('nb-card', 'Horizontal form').contains('Sign in')
-        cy.contains('nb-card', 'Horizontal form').find('[type="email"]')//--> find input on the 2nd form for email
+        cy.contains('nb-card', 'Horizontal form').find('[type="email"]')//-->find input on the 2nd form for email
+        cy.contains('nb-card', 'Horizontal form').get('button')
 
         //cypress chains & DOM
         cy.get('#inputEmail3')
@@ -66,7 +66,7 @@ describe('first test suite', () => {
             .click()           //--> if finish with action method (as click or type), next in new chain start with cy. 
     })
 
-    it('alias & then & wrap methods', () => {
+    it.only('alias & then & wrap methods', () => {
 
         cy.visit('/')
         cy.contains('Forms').click()
