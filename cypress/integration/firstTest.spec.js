@@ -190,10 +190,10 @@ describe('first test suite', () => {
             date.setDate((date.getDate() + 20)) //--> this is hardcoded day
             // console.log(date)                  //--> to find date in DevTools
             // date.setDate((date.getDate() + day))
-            let futureDay = date.getDate()
+            let futureDate = date.getDate()
             // let futureMonth = date.toLocaleDateString('en-US', { month: 'short' })
             // let futureYear = date.getFullYear()
-            let dateToAssert = `Feb ${futureDay}, 2025`
+            let dateToAssert = `Feb ${futureDate}, 2025`
             // let dateToAssert = `${futureMonth} ${futureDay}, ${futureYear}`
 
             // cy.get('nb-calendar-navigation').invoke('attr', 'ng-reflect-date').then(dateAttribute => {
@@ -209,7 +209,7 @@ describe('first test suite', () => {
 
         cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
             cy.wrap(input).click()
-            cy.get('.day-cell').not('.bounding-month').contains(futureDay).click()   //--> this is hardcoded day
+            cy.get('.day-cell').not('.bounding-month').contains(futureDate).click()   //--> this is hardcoded day
             // const dateToAssert = selectDayFromCurrent(5)                         // ---> calling function above
             cy.wrap(input).invoke('prop', 'value').should('contain', dateToAssert)    // assertion v.1
             cy.wrap(input).should('have.value', dateToAssert)                     // assertion v.2 variation
