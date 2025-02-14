@@ -155,7 +155,7 @@ describe('first test suite', () => {
         })
     })
 
-    it.only('check boxes', () => {
+    it('check boxes', () => {
         cy.visit('/')
         cy.contains('Modal & Overlays').click()
         cy.contains('Toastr').click()
@@ -167,16 +167,16 @@ describe('first test suite', () => {
         cy.get('[type="checkbox"]').eq(2).uncheck({ force: true }) // uncheck another one
     })
 
-    it('web date pickers (with hardcoded days, assert property)', () => {
+    it.only('web date pickers ( with hardcoded days, assert property)', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Datepicker').click()
 
-        cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
+        cy.contains('nb-card', 'Common Datepicker').find('input').then( input => {
             cy.wrap(input).click()
-            cy.get('.day-cell').not('.bounding-month').contains('30').click()
-            cy.wrap(input).invoke('prop', 'value').should('contain', 'Jun 30, 2024') // assertion v.1
-            cy.wrap(input).should('have.value', 'Jun 30, 2024')                     // assertion v.2 variation
+            cy.get('.day-cell').not('.bounding-month').contains('21').click()
+            cy.wrap(input).invoke('prop', 'value').should('contain', 'Feb 21, 2025') // assertion v.1
+            cy.wrap(input).should('have.value', 'Feb 21, 2025')                     // assertion v.2 variation
         })
     })
 
