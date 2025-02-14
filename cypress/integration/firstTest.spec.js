@@ -141,7 +141,7 @@ describe('first test suite', () => {
             })   
     })
 
-    it.only('checkboxes & radio buttons (assert property)', () => { //only for type radio or checkbox (check & uncheck methods) 
+    it('checkboxes & radio buttons (assert property)', () => { //only for type radio or checkbox (check & uncheck methods) 
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
@@ -155,14 +155,12 @@ describe('first test suite', () => {
         })
     })
 
-    it('check boxes', () => {
-
+    it.only('check boxes', () => {
         cy.visit('/')
         cy.contains('Modal & Overlays').click()
         cy.contains('Toastr').click()
-
         // cy.get('[type="checkbox"]').check({ force: true }) // will not work 
-        // cy.get('[type="checkbox"]').uncheck({ force: true }) // will not work
+        // cy.get('[type="checkbox"]').uncheck({ force: true }) // will not work too
 
         cy.get('[type="checkbox"]').eq(0).click({ force: true }) // uncheck
         cy.get('[type="checkbox"]').eq(1).check({ force: true }) // check
@@ -170,7 +168,6 @@ describe('first test suite', () => {
     })
 
     it('web date pickers (with hardcoded days, assert property)', () => {
-
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Datepicker').click()
