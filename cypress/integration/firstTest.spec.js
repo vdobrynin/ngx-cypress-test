@@ -167,7 +167,7 @@ describe('first test suite', () => {
         cy.get('[type="checkbox"]').eq(2).uncheck({ force: true }) // uncheck another one
     })
 
-    it.only('web date pickers ( with hardcoded days, assert property)', () => {
+    it('web date pickers ( with hardcoded days, assert property)', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Datepicker').click()
@@ -180,38 +180,37 @@ describe('first test suite', () => {
         })
     })
 
-    it('web datepicker (pick random days))', () => {
-
-        function selectDayFromCurrent(day) {
-
-            let date = new Date()
-            date.setDate((date.getDate() + day))
-            // date.setDate((date.getDate() + 4)) //--> this is hardcoded day
-            // console.log(date)                  //--> to find date in DevTools
-            let futureDay = date.getDate()
-            let futureMonth = date.toLocaleDateString('en-US', { month: 'short' })
-            let futureYear = date.getFullYear()
-            let dateToAssert = `${futureMonth} ${futureDay}, ${futureYear}`
-
-            cy.get('nb-calendar-navigation').invoke('attr', 'ng-reflect-date').then(dateAttribute => {
-
-                if (!dateAttribute.includes(futureMonth) || !dateAttribute.includes(futureYear)) {
-                    cy.get('[data-name="chevron-right"]').click()
-                    selectDayFromCurrent(day)
-                } else {
-                    cy.get('.day-cell').not('.bounding-month').contains(futureDay).click()
-                }
-            })
-            return dateToAssert
-        }
-
+    it.only('web datepicker (pick random days))', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Datepicker').click()
 
+        // function selectDayFromCurrent(day) {
+            let date = new Date()
+            date.setDate((date.getDate() + 20)) //--> this is hardcoded day
+            // console.log(date)                  //--> to find date in DevTools
+            // date.setDate((date.getDate() + day))
+            let futureDay = date.getDate()
+            // let futureMonth = date.toLocaleDateString('en-US', { month: 'short' })
+            // let futureYear = date.getFullYear()
+            let dateToAssert = `Feb ${futureDay}, 2025`
+            // let dateToAssert = `${futureMonth} ${futureDay}, ${futureYear}`
+
+            // cy.get('nb-calendar-navigation').invoke('attr', 'ng-reflect-date').then(dateAttribute => {
+            //     if (!dateAttribute.includes(futureMonth) || !dateAttribute.includes(futureYear)) {
+            //         cy.get('[data-name="chevron-right"]').click()
+            //         selectDayFromCurrent(day)
+            //     } else {
+            //         cy.get('.day-cell').not('.bounding-month').contains(futureDay).click()
+            //     }
+            // })
+            // return dateToAssert
+        // }
+
         cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
             cy.wrap(input).click()
-            const dateToAssert = selectDayFromCurrent(6)                         // ---> calling function above
+            cy.get('.day-cell').not('.bounding-month').contains(futureDay).click()   //--> this is hardcoded day
+            // const dateToAssert = selectDayFromCurrent(5)                         // ---> calling function above
             cy.wrap(input).invoke('prop', 'value').should('contain', dateToAssert)    // assertion v.1
             cy.wrap(input).should('have.value', dateToAssert)                     // assertion v.2 variation
         })
