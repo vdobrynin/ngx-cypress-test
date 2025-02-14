@@ -180,7 +180,7 @@ describe('first test suite', () => {
         })
     })
 
-    it.only('web datepicker (pick random days))', () => {
+    it('web datepicker (pick random days))', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Datepicker').click()
@@ -217,22 +217,21 @@ describe('first test suite', () => {
         })
     })
 
-    it('list & dropdowns', () => {
-
+    it.only('list & dropdowns', () => {
         cy.visit('/')
 
         // example 1
         cy.get('nav nb-select').click()
-        cy.get('.options-list').contains('Dark').click()
-        cy.get('nav nb-select').should('contain', 'Dark')
+        cy.get('.options-list').contains('Dark').click()        // '.options-list' class name
+        cy.get('nav nb-select').should('contain', 'Dark')       // assertion
         // cy.get('nb-layout-header nav').should('have.css', 'background-color', 'rgb(34, 43, 69)')
 
-        // // example 2
-        cy.get('nav nb-select').then(dropdown => {
+        // example 2
+        cy.get('nav nb-select').then( dropdown => {
             cy.wrap(dropdown).click()
-            cy.get('.options-list nb-option').each((listItem, index) => {
+            cy.get('.options-list nb-option').each( (listItem, index) => { // looping through 4 elements w/index
                 const itemText = listItem.text().trim()
-                // const colors = {
+                // const colors = {   
                 //     "Light": "rgb(255, 255, 255)",
                 //     "Dark": "rgb(34, 43, 69)",
                 //     "Cosmic": "rgb(50, 50, 89)",
@@ -242,7 +241,7 @@ describe('first test suite', () => {
                 cy.wrap(dropdown).should('contain', itemText)
                 // cy.get('nb-layout-header nav').should('have.css', 'background-color', colors[itemText])
                 if (index < 3) {
-                    cy.wrap(dropdown).click()
+                    cy.wrap(dropdown).click()       // open dropdown list
                 }
             })
         })
