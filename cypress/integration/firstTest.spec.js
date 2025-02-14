@@ -67,7 +67,7 @@ describe('first test suite', () => {
     })
 
     // it.only('alias & then & wrap methods', () => {
-    it.only('save subject of the command', () => {
+    it('save subject of the command', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
@@ -97,8 +97,7 @@ describe('first test suite', () => {
         })
     })
 
-    it('extract text values (invoke command)', () => {
-
+    it.only('extract text values (invoke command)', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
