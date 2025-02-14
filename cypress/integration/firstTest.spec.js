@@ -211,7 +211,7 @@ describe('first test suite', () => {
         cy.contains('nb-card', 'Common Datepicker').find('input').then( input => {
             cy.wrap(input).click()
             // cy.get('.day-cell').not('.bounding-month').contains(futureDay).click()   //--> this was hardcoded day
-            const dateToAssert = selectDayFromCurrent(65)                         // ---> calling function above
+            const dateToAssert = selectDayFromCurrent(65)                         //--> calling function above to choose thy we want
             cy.wrap(input).invoke('prop', 'value').should('contain', dateToAssert)    // assertion v.1
             cy.wrap(input).should('have.value', dateToAssert)                     // assertion v.2 variation
         })
