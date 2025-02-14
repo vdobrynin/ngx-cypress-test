@@ -97,7 +97,7 @@ describe('first test suite', () => {
         })
     })
 
-    it.only('extract text values (invoke command)', () => {
+    it('extract text values (invoke command)', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
@@ -134,23 +134,23 @@ describe('first test suite', () => {
 
         // example 5 invoke property with hidden properties (like value) 
         cy.get('#exampleInputEmail1').type('test@test.com')
-        cy.get('#exampleInputEmail1').invoke('prop', 'value').should('contain', 'test@test.com')//invoke property & value
-        cy.get('#exampleInputEmail1').invoke('prop', 'value').should('contain', 'test@test.com')//invoke property & value
+        cy.get('#exampleInputEmail1').invoke('prop', 'value').should('contain', 'test@test.com') //invoke property & value
+        cy.get('#exampleInputEmail1').invoke('prop', 'value').should('contain', 'test@test.com') //invoke property & value
             .then( property => {
                 expect(property).to.equal('test@test.com') // assertion with property
             })   
     })
 
-    it('checkboxes & radio buttons (assert property)', () => {
-
+    it.only('checkboxes & radio buttons (assert property)', () => { //only for type radio or checkbox (check & uncheck methods) 
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
 
-        cy.contains('nb-card', 'Using the Grid').find('[type="radio"]').then(radioButtons => {
-            cy.wrap(radioButtons).eq(0).check({ force: true }).should('be.checked')
-            cy.wrap(radioButtons).eq(1).check({ force: true })
-            cy.wrap(radioButtons).eq(0).should('not.be.checked')
+        cy.contains('nb-card', 'Using the Grid').find('[type="radio"]').then( radioButtons => {
+            cy.wrap(radioButtons).eq(0).check({ force: true })
+                .should('be.checked')                   //for radio button visually hidden use 'force: true'
+            cy.wrap(radioButtons).eq(1).check({ force: true }) //if we select 1st button
+            cy.wrap(radioButtons).eq(0).should('not.be.checked') // then 2nd button should be uncheck
             cy.wrap(radioButtons).eq(2).should('be.disabled')
         })
     })
