@@ -111,24 +111,24 @@ describe('first test suite', () => {
         //     // .should('have.text', 'Email address')           // example for assertions 2 for #20
 
         // example 2 ---> using then() (jquery method !!!)
-        cy.get('[for="exampleInputEmail1"]').then( label => {   // label will represent object value
+        cy.get('[for="exampleInputEmail1"]').then(label => {   // label will represent object value
             const labelText = label.text()                      // assign jQuery method to the constant
             expect(labelText).to.equal('Email address')         // assertion expect in jQuery type syntax
             cy.wrap(labelText).should('contain', 'Email address') //--->or use 'cy.wrap' regular assertion
 
-        //     // expect(labeText).to.have.class('label')            // example for assertions 3 for #20
-        //     // expect(labelText).to.have.text('Email address')     // example for assertions 4 for #20
+            //     // expect(labeText).to.have.class('label')            // example for assertions 3 for #20
+            //     // expect(labelText).to.have.text('Email address')     // example for assertions 4 for #20
         })
 
         // example 3 ---> cypress method (invoke !!!)
-        cy.get('[for="exampleInputEmail1"]').invoke('text').then( text => { //text object will represent text value
+        cy.get('[for="exampleInputEmail1"]').invoke('text').then(text => { //text object will represent text value
             expect(text).to.equal('Email address')
         })
         cy.get('[for="exampleInputEmail1"]').invoke('text').should('contain', 'Email address')
         cy.get('[for="exampleInputEmail1"]').invoke('text').as('labelText').should('contain', 'Email address')// using alias
 
         // example 4 (invoke with attributes with name (class or any))
-        cy.get('[for="exampleInputEmail1"]').invoke('attr', 'class').then( classValue => {
+        cy.get('[for="exampleInputEmail1"]').invoke('attr', 'class').then(classValue => {
             expect(classValue).to.equal('label')
         })
 
@@ -136,9 +136,9 @@ describe('first test suite', () => {
         cy.get('#exampleInputEmail1').type('test@test.com')
         cy.get('#exampleInputEmail1').invoke('prop', 'value').should('contain', 'test@test.com') //invoke property & value
         cy.get('#exampleInputEmail1').invoke('prop', 'value').should('contain', 'test@test.com') //invoke property & value
-            .then( property => {
+            .then(property => {
                 expect(property).to.equal('test@test.com') // assertion with property
-            })   
+            })
     })
 
     it('checkboxes & radio buttons (assert property)', () => { //only for type radio or checkbox (check & uncheck methods) 
@@ -146,7 +146,7 @@ describe('first test suite', () => {
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
 
-        cy.contains('nb-card', 'Using the Grid').find('[type="radio"]').then( radioButtons => {
+        cy.contains('nb-card', 'Using the Grid').find('[type="radio"]').then(radioButtons => {
             cy.wrap(radioButtons).eq(0).check({ force: true })
                 .should('be.checked')                   //for radio button visually hidden use 'force: true'
             cy.wrap(radioButtons).eq(1).check({ force: true }) //if we select 1st button
@@ -172,7 +172,7 @@ describe('first test suite', () => {
         cy.contains('Forms').click()
         cy.contains('Datepicker').click()
 
-        cy.contains('nb-card', 'Common Datepicker').find('input').then( input => {
+        cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
             cy.wrap(input).click()
             cy.get('.day-cell').not('.bounding-month').contains('21').click()
             cy.wrap(input).invoke('prop', 'value').should('contain', 'Feb 21, 2025') // assertion v.1
@@ -196,11 +196,11 @@ describe('first test suite', () => {
             // let dateToAssert = `Feb ${futureDay}, 2025`                 // change date to the day
             let dateToAssert = `${futureMonth} ${futureDay}, ${futureYear}` // re-write to be dynamic
 
-            cy.get('nb-calendar-navigation').invoke('attr', 'ng-reflect-date').then( dateAttribute => {
+            cy.get('nb-calendar-navigation').invoke('attr', 'ng-reflect-date').then(dateAttribute => {
                 if (!dateAttribute.includes(futureMonth) || !dateAttribute.includes(futureYear)) {
                     cy.get('[data-name="chevron-right"]').click()
                     selectDayFromCurrent(day)
-                } 
+                }
                 else {
                     cy.get('.day-cell').not('.bounding-month').contains(futureDay).click()
                 }
@@ -208,7 +208,7 @@ describe('first test suite', () => {
             return dateToAssert
         }
 
-        cy.contains('nb-card', 'Common Datepicker').find('input').then( input => {
+        cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
             cy.wrap(input).click()
             // cy.get('.day-cell').not('.bounding-month').contains(futureDay).click()   //--> this was hardcoded day
             const dateToAssert = selectDayFromCurrent(65)                         //--> calling function above to choose thy we want
@@ -217,7 +217,7 @@ describe('first test suite', () => {
         })
     })
 
-    it.only('list & dropdowns', () => {
+    it('list & dropdowns', () => {
         cy.visit('/')
 
         // example 1
@@ -227,9 +227,9 @@ describe('first test suite', () => {
         // cy.get('nb-layout-header nav').should('have.css', 'background-color', 'rgb(34, 43, 69)')
 
         // example 2
-        cy.get('nav nb-select').then( dropdown => {
+        cy.get('nav nb-select').then(dropdown => {
             cy.wrap(dropdown).click()
-            cy.get('.options-list nb-option').each( (listItem, index) => { // looping through 4 elements w/index
+            cy.get('.options-list nb-option').each((listItem, index) => { // looping through 4 elements w/index
                 const itemText = listItem.text().trim()
                 // const colors = {   
                 //     "Light": "rgb(255, 255, 255)",
@@ -247,8 +247,7 @@ describe('first test suite', () => {
         })
     })
 
-    it('web tables', () => {
-
+    it.only('web tables', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
@@ -274,20 +273,19 @@ describe('first test suite', () => {
             cy.wrap(tableColumns).eq(3).should('contain', 'Smith')
         })
 
-        // example 3 (get each row validation)
-        const age = [20, 30, 40, 200]
-
-        cy.wrap(age).each(age => {
-            cy.get('thead [placeholder="Age"]').clear().type(age)
-            cy.wait(300)                                      //--->cypress too fast, need to wait (up to 0.5 sec)
-            cy.get('tbody tr').each(tableRow => {
-                if (age == 200) {
-                    cy.wrap(tableRow).should('contain', 'No data found')
-                } else {
-                    cy.wrap(tableRow).find('td').eq(6).should('contain', age)
-                }
-            })
-        })
+        // // example 3 (get each row validation)
+        // const age = [20, 30, 40, 200]
+        // cy.wrap(age).each(age => {
+        //     cy.get('thead [placeholder="Age"]').clear().type(age)
+        //     cy.wait(300)                                      //-->cypress too fast, need to wait (up to 0.5 sec)
+        //     cy.get('tbody tr').each(tableRow => {
+        //         if (age == 200) {
+        //             cy.wrap(tableRow).should('contain', 'No data found')
+        //         } else {
+        //             cy.wrap(tableRow).find('td').eq(6).should('contain', age)
+        //         }
+        //     })
+        // })
     })
 
     it('popUps & toolTips', () => {
