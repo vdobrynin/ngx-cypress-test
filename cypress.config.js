@@ -2,8 +2,8 @@ const { defineConfig } = require('cypress')
 const { initPlugin } = require('cypress-plugin-snapshots/plugin');
 
 module.exports = defineConfig({
-  viewportHeight:  900, //1050, 
-  viewportWidth: 1440, //1680,
+  viewportHeight: 1200, //900,  
+  viewportWidth: 1920, //1440, 
   screenshotOnRunFailure: false,
   video: false,
   defaultCommandTimeout: 10000,
