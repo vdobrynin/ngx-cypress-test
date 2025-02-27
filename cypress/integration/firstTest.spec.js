@@ -48,7 +48,7 @@ describe('first test suite', () => {
         // Theory
         // get() - find elements on the page by locator globally
         // find() - find child elements by locator
-        // contains() - find HTML text & by by text & locator
+        // contains() - find HTML text & by text & locator
         cy.contains('Sign in')                   // ---> cy. are looking for the first much of "Sign in"
         cy.contains('[status="warning"]', 'Sign in')       //--> to find 2nd locator of "Sign in"
         cy.contains('nb-card', 'Horizontal form').find('button')  //-->find 2nd locator of "Sign in"
