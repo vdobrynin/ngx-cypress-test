@@ -288,7 +288,7 @@ describe('first test suite', () => {
         })
     })
 
-    it.only('popUps & toolTips', () => {
+    it('popUps & toolTips', () => {
         cy.visit('/')
         cy.contains('Modal & Overlays').click()
         cy.contains('Tooltip').click()
@@ -299,17 +299,16 @@ describe('first test suite', () => {
         cy.get('nb-tooltip').should('contain', 'This is a tooltip')
     })
 
-    it('dialog box', () => {
-
+    it.only('dialog box', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
 
-        // example 1 --> not preferable cause code will never be executed
-        cy.get('tbody tr').first().find('.nb-trash').click()
-        cy.on('window:confirm', (confirm) => {
-            expect(confirm).to.equal('Are you sure you want to delete?')
-        })
+        // // example 1 --> not preferable code cause code will never be executed !!!
+        // cy.get('tbody tr').first().find('.nb-trash').click()
+        // cy.on('window:confirm', (confirm) => {
+        //     expect(confirm).to.equal('Are you sure you want to delete?')
+        // })
 
         // example 2 --> it is much better approach to click to confirm message
         const stub = cy.stub()
