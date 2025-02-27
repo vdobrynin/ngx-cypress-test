@@ -17,13 +17,13 @@ describe('test with Page Object', () => {
     })
     //                                               // if don't want to run firefox or edge
     // it('should submit Inline & Basic form and select tomorrow date in the calendar', { browser: ['!firefox', '!edge'] }, () => {
-    it('should submit Inline & Basic form and select tomorrow date in the calendar', () => {
+    it.only('should submit Inline & Basic form and select tomorrow date in the calendar', () => {
         navigateTo.formLayoutsPage()
         onFormLayoutsPage.submitInLineFormWithNameAndEmail('Artem', 'test@test.com')
         onFormLayoutsPage.submitBasicFormWithEmailAndPassword('test@test.com', 'password')
 
         navigateTo.datepickerPage()
-        onDatepickerPage.selectCommonDatepickerDateFromToday(1)
+        onDatepickerPage.selectCommonDatepickerDateFromToday(1) 
         onDatepickerPage.selectDatepickerWithRangeFromToday(7, 14)
 
         // navigateTo.smartTablePage()
