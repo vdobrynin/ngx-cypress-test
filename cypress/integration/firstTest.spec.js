@@ -247,7 +247,7 @@ describe('first test suite', () => {
         })
     })
 
-    it.only('web tables', () => {
+    it('web tables', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
@@ -288,8 +288,7 @@ describe('first test suite', () => {
         })
     })
 
-    it('popUps & toolTips', () => {
-
+    it.only('popUps & toolTips', () => {
         cy.visit('/')
         cy.contains('Modal & Overlays').click()
         cy.contains('Tooltip').click()
