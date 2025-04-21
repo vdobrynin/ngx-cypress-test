@@ -28,7 +28,8 @@ describe('JSON objects', () => {
     console.log(simpleObject["key"])
     console.log(simpleArrayOfValues[2])
     console.log(arrayOfObjects[2].key3)
-    console.log(mix.Students[1].lastName)
-    const lastNameOfSecondStudent = mix.Students[1].firstName //assign to env 
+    console.log(mix.Students[0].firstName)
+    console.log(mix.Students[0].lastName)
+    // const lastNameOfSecondStudent = mix.Students[1].lastName //assign to env 
   })
 })
