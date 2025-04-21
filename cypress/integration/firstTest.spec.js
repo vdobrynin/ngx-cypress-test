@@ -175,8 +175,8 @@ describe('first test suite', () => {
         cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
             cy.wrap(input).click()
             cy.get('.day-cell').not('.bounding-month').contains('21').click()
-            cy.wrap(input).invoke('prop', 'value').should('contain', 'Feb 21, 2025') // assertion v.1
-            cy.wrap(input).should('have.value', 'Feb 21, 2025')                     // assertion v.2 variation
+            cy.wrap(input).invoke('prop', 'value').should('contain', 'Apr 21, 2025') // assertion v.1
+            cy.wrap(input).should('have.value', 'Apr 21, 2025')                     // assertion v.2 variation
         })
     })
 
@@ -299,7 +299,7 @@ describe('first test suite', () => {
         cy.get('nb-tooltip').should('contain', 'This is a tooltip')
     })
 
-    it.only('dialog box', () => {
+    it('dialog box', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
