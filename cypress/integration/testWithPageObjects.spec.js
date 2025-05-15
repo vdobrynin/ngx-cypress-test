@@ -3,7 +3,7 @@ import { onFormLayoutsPage } from "../support/page-objects/formLayoutsPage"
 import { onDatepickerPage } from "../support/page-objects/datepickerPage"
 import { onSmartTablePage } from "../support/page-objects/smartTablePage"
 
-describe('test with Page Object', () => {
+describe('Test with Page Object', () => {
     beforeEach('open application', () => {
         cy.openHomePage()
     })

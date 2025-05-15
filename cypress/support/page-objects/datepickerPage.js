@@ -34,7 +34,7 @@ export class DatepickerPage {
             let dateAssertFirst = selectDayFromCurrent(firstDay)
             let dateAssertSecond = selectDayFromCurrent(secondDay)
 
-            const finalDate = dateAssertFirst + ' - ' + dateAssertSecond    // page object lecture #33
+            const finalDate = dateAssertFirst + ' - ' + dateAssertSecond // page object lecture #33
             cy.wrap(input).invoke('prop', 'value').should('contain', finalDate)
             cy.wrap(input).should('have.value', finalDate)
         })

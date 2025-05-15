@@ -174,9 +174,9 @@ describe('first test suite', () => {
 
         cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
             cy.wrap(input).click()
-            cy.get('.day-cell').not('.bounding-month').contains('21').click()
-            cy.wrap(input).invoke('prop', 'value').should('contain', 'Apr 21, 2025') // assertion v.1
-            cy.wrap(input).should('have.value', 'Apr 21, 2025')                     // assertion v.2 variation
+            cy.get('.day-cell').not('.bounding-month').contains('14').click()
+            cy.wrap(input).invoke('prop', 'value').should('contain', 'May 14, 2025') // assertion v.1
+            cy.wrap(input).should('have.value', 'May 14, 2025')                     // assertion v.2 variation
         })
     })
 
