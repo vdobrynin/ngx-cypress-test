@@ -1,7 +1,7 @@
 
 describe("shadow dom", () => {
 
-  it.only("access shadow dom", () => {
+  it("access shadow dom", () => {
     // cy.visit("https://www.htmlelements.com/demos/dropdownlist/shadow-dom/index.htm")
 
     // cy.wait(3000);
