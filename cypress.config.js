@@ -33,5 +33,5 @@ module.exports = defineConfig({
     },
   },
   includeShadowDom: true,
-  projectId: "emodef",
+  projectId: "m8xczo",
 });

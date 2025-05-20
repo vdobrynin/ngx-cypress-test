@@ -30,8 +30,8 @@
     "prepush": "npm run lint:ci",
     "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
     "cy:verify": "cypress verify",
-    "cy:run_spec": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --record --parallel --key 828084cf-8e42-472c-9dff-a727068e0aa7",
-    "cy:run_browser": "npm run cy:run_spec -- --browser --firefox --group Firefox --ci-build-id 3 & npm run cy:run_spec -- --browser --chrome --group Chrome --ci-build-id 3",
+    "cy:run_spec": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --record --key aaa4020f-12a8-4919-bb58-f4b2e031907a",
+    "cy:run_browser": "npm run cy:run_spec -- --browser --firefox --group Firefox --ci-build-id 1 & npm run cy:run_spec -- --browser --chrome --group Chrome --ci-build-id 1",
     "cy:run_browsers": "npm run cy:run_spec -- --browser --firefox --group Firefox --ci-build-id $ID & npm run cy:run_spec -- --browser --chrome --group Chrome --ci-build-id $ID",
     "cy:run_group": "ID=$(uuid) npm run cy:run_browser",
     "cy:run": "npx cypress run --headless --record --key 828084cf-8e42-472c-9dff-a727068e0aa7 --parallel --ci-build-id 1"
@@ -115,6 +115,6 @@
     "tsconfig-paths-webpack-plugin": "^4.2.0",
     "tslint": "^6.1.3",
     "tslint-language-service": "^0.9.9",
-    "typescript": "^3.9.10"
+    "typescript": "3.4.5"
   }
 }

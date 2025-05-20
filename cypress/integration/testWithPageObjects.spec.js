@@ -17,7 +17,7 @@ describe('Test with Page Object', () => {
     })
     //                                               // if don't want to run 'chrome' or ['!firefox', '!edge']
     // it('should submit Inline & Basic form and select tomorrow date in the calendar', { browser: 'chrome' }, () => {
-    it('should submit Inline & Basic form and select tomorrow date in the calendar', { browser: ['!firefox', '!edge'] }, () => {
+    it('should submit Inline & Basic form and select tomorrow date in the calendar', { browser: '!edge' }, () => {
         navigateTo.formLayoutsPage()
         onFormLayoutsPage.submitInLineFormWithNameAndEmail('Artem', 'test@test.com')
         onFormLayoutsPage.submitBasicFormWithEmailAndPassword('test@test.com', 'password')
