@@ -19,5 +19,5 @@
       "@utils/*": ["srg/utils/*"]
     }
   },
-  "include": ["**/*.ts", "src/**/*.ts", "cypress/**/*.ts"]
+  "include": ["**/*.*", "src/**/*.*", "cypress/**/*.*"]
 }

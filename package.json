@@ -31,10 +31,7 @@
     "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
     "cy:verify": "cypress verify",
     "cy:run_spec": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --record --key aaa4020f-12a8-4919-bb58-f4b2e031907a",
-    "cy:run_browser": "npm run cy:run_spec -- --browser --firefox --group Firefox --ci-build-id 1 & npm run cy:run_spec -- --browser --chrome --group Chrome --ci-build-id 1",
-    "cy:run_browsers": "npm run cy:run_spec -- --browser --firefox --group Firefox --ci-build-id $ID & npm run cy:run_spec -- --browser --chrome --group Chrome --ci-build-id $ID",
-    "cy:run_group": "ID=$(uuid) npm run cy:run_browser",
-    "cy:run": "npx cypress run --headless --record --key 828084cf-8e42-472c-9dff-a727068e0aa7 --parallel --ci-build-id 1"
+    "cy:run_browser": "npm run cy:run_spec -- -b chrome --group 2x-chrome --ci-build-id 17 && npm run cy:run_spec -- -b firefox --group 2x-firefox --ci-build-id 17"
   },
   "dependencies": {
     "@agm/core": "^1.1.0",
@@ -48,6 +45,7 @@
     "@angular/platform-browser-dynamic": "^8.0.0",
     "@angular/router": "^8.0.0",
     "@asymmetrik/ngx-leaflet": "3.0.1",
+    "@cypress/commit-info": "^2.2.0",
     "@nebular/auth": "4.1.2",
     "@nebular/eva-icons": "4.1.2",
     "@nebular/security": "4.1.2",
@@ -61,7 +59,6 @@
     "ckeditor": "4.7.3",
     "classlist.js": "1.1.20150312",
     "core-js": "2.5.1",
-    "cypress-parallel": "^0.15.0",
     "cypress-plugin-snapshots": "^1.4.4",
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.0",
@@ -103,7 +100,9 @@
     "@types/node": "6.0.90",
     "codelyzer": "^5.0.1",
     "conventional-changelog-cli": "^2.1.1",
-    "cypress": "^14.3.3",
+    "cypress": "^14.4.0",
+    "cypress-parallel": "^0.15.0",
+    "cypress-split": "^1.24.17",
     "husky": "0.13.3",
     "npm-run-all": "^4.0.2",
     "playwright-webkit": "^1.52.0",
