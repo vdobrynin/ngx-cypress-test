@@ -30,8 +30,8 @@
     "prepush": "npm run lint:ci",
     "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
     "cy:verify": "cypress verify",
-    "cy:run_spec": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --record --key aaa4020f-12a8-4919-bb58-f4b2e031907a",
-    "cy:run_browser": "npm run cy:run_spec -- -b chrome --group 2x-chrome --ci-build-id 17 && npm run cy:run_spec -- -b firefox --group 2x-firefox --ci-build-id 17"
+    "cy:run_spec": "npx cypress run --spec 'cypress/integration/testWithPageObjects.spec.js' --headless --record --key aaa4020f-12a8-4919-bb58-f4b2e031907a --parallel",
+    "cy:run_browser": "npm run cy:run_spec -- -b chrome --group chrome --ci-build-id 33 && npm run cy:run_spec -- -b firefox --group firefox --ci-build-id 33"
   },
   "dependencies": {
     "@agm/core": "^1.1.0",
