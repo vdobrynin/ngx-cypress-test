@@ -2,7 +2,7 @@ pipeline {
 
     agent any
     tools {nodejs "node"}
-    
+
   stages {
 
     stage('cypress parallel tests') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('tester B') {
             agent {
-                label "mac"
+                label "myMac"
             }
             steps {
                 sh "npm run cy:run"
