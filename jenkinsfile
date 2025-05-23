@@ -10,7 +10,7 @@ pipeline {
             }
         }
         parallel {
-        stage('tester B') {
+        stage('tester A_1') {
             steps {
                 sh "npm run cy:run"
             }
