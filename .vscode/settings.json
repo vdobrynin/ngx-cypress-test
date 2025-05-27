@@ -1,5 +1,5 @@
 {
   "typescript.tsdk": "./node_modules/typescript/lib",
   "tslint.enable": false,
-  "cSpell.words": ["imput"]
+  "cSpell.words": ["imput", "Ultrafast"]
 }

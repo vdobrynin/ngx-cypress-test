@@ -1,6 +1,5 @@
 const { defineConfig } = require('cypress')
 const { initPlugin } = require('cypress-plugin-snapshots/plugin')
-const eyesPlugin = require('@applitools/eyes-cypress')
 
 module.exports = defineConfig({
   viewportHeight: 900, //1200,
@@ -36,5 +35,3 @@ module.exports = defineConfig({
   includeShadowDom: true,
   projectId: "m8xczo",
 });
-
-require('@applitools/eyes-cypress')(module);

@@ -1,27 +1,25 @@
-describe('visual test', () => {
+describe('visual test old', () => {
 
-    beforeEach(() => {
-        // Start Applitools Visual AI Test
-        cy.eyesOpen({
-            appName: 'ngx cypress test app',
-            testName: Cypress.currentTest.title,
+    it('should test snapshot', () => {
+        cy.visit('/')
+        cy.contains('Forms').click()
+        cy.contains('Form Layouts').click()
+
+        cy.contains('nb-card', 'Using the Grid').then(firstForm => {
+            cy.wrap(firstForm).toMatchImageSnapshot()   // snapshot only testing area
+            cy.document().toMatchImageSnapshot()        // for full page
         })
     })
 
-    it('test applitools demo app', () => {
+    it.only('should test with Percy', () => {
         cy.visit('/')
-        cy.eyesCheckWindow({
-            tag: "Home page"
-        });
-
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
-        cy.eyesCheckWindow({
-            tag: "Form Layouts page"
-        });
-    })
-    afterEach(() => {
-        // End Applitools Visual AI Test
-        cy.eyesClose()
+
+        cy.contains('nb-card', 'Using the Grid').then(firstForm => {
+            cy.wait(1000);
+            cy.percySnapshot('FormLayouts1');
+            cy.percySnapshot('FormLayouts2', { widths: [768, 992, 1200] });
+        })
     })
 })
