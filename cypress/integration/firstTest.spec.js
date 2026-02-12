@@ -3,7 +3,6 @@
 const { property } = require("lodash")
 
 describe('first test suite', () => {
-
     it('first test', () => {
         cy.visit('/')
         cy.contains('Forms').click()
