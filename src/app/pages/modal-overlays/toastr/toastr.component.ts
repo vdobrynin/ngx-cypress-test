@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { ToasterConfig } from 'angular2-toaster';
-
-import 'style-loader!angular2-toaster/toaster.css';
 import {
   NbComponentStatus,
   NbGlobalLogicalPosition,
@@ -11,14 +8,13 @@ import {
 } from '@nebular/theme';
 
 @Component({
+  standalone: false,
   selector: 'ngx-toastr',
   styleUrls: ['./toastr.component.scss'],
   templateUrl: './toastr.component.html',
 })
 export class ToastrComponent {
   constructor(private toastrService: NbToastrService) {}
-
-  config: ToasterConfig;
 
   index = 1;
   destroyByClick = true;

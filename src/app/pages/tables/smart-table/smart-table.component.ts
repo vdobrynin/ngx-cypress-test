@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import { LocalDataSource } from '@yoch/ng-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
 
 @Component({
+  standalone: false,
   selector: 'ngx-smart-table',
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.scss'],

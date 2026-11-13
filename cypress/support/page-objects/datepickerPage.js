@@ -3,12 +3,14 @@ function selectDayFromCurrent(day) {
     let date = new Date()
     date.setDate((date.getDate() + day))
     let futureDay = date.getDate()
-    let futureMonth = date.toLocaleString('default', { month: 'short' })
-    let dateAssert = futureMonth + ' ' + futureDay + ', ' + date.getFullYear()
+    let futureMonth = date.toLocaleString('en-US', { month: 'short' })
+    let futureMonthLong = date.toLocaleString('en-US', { month: 'long' })
+    let futureYear = date.getFullYear()
+    let dateAssert = futureMonth + ' ' + futureDay + ', ' + futureYear
 
-    cy.get('nb-calendar-navigation').invoke('attr', 'ng-reflect-date').then(dateAttribute => {
-        if (!dateAttribute.includes(futureMonth)) {
-            cy.get('[data-name="chevron-right"]').click()
+    cy.get('nb-card-header.calendar-navigation button').first().invoke('text').then(monthAndYear => {
+        if (!monthAndYear.includes(futureMonthLong) || !monthAndYear.includes(futureYear)) {
+            cy.get('button.next-month').click()
             selectDayFromCurrent(day)
         } else {
             cy.get('.day-cell').not('.bounding-month').contains(futureDay).click()

@@ -1,3 +1,5 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files
+
 # =========================
 # Dependencies and logs
 # =========================
@@ -12,12 +14,14 @@ pnpm-debug.log*
 *.tgz
 
 # =========================
-# Angular / build output
+# Angular and build output
 # =========================
 /dist/
-/out-tsc/
 /tmp/
+/out-tsc/
+/bazel-out/
 /.angular/
+/.history/
 /coverage/
 /docs/
 /typings/
@@ -26,6 +30,8 @@ pnpm-debug.log*
 /libpeerconnection.log
 testem.log
 *.tsbuildinfo
+.eslintcache
+.stylelintcache
 
 # Native node-gyp output
 /build/*
@@ -34,18 +40,19 @@ testem.log
 # Environment variables
 # =========================
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 cypress.env.json
 
 # =========================
-# Cypress
+# Cypress and test output
 # =========================
 /cypress/videos/
 /cypress/screenshots/
 /cypress/downloads/
 /cypress/results/
 /cypress/reports/
+__screenshots__/
 
 # Keep visual regression baselines tracked:
 # cypress/integration/__image_snapshots__/
@@ -68,6 +75,7 @@ cypress.env.json
 !/.vscode/tasks.json
 !/.vscode/launch.json
 !/.vscode/extensions.json
+!/.vscode/mcp.json
 
 # =========================
 # End-to-end test output

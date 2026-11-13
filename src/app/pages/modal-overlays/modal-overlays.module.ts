@@ -86,9 +86,6 @@ const SERVICES = [
   providers: [
     ...SERVICES,
   ],
-  entryComponents: [
-    ...ENTRY_COMPONENTS,
-  ],
 })
 export class ModalOverlaysModule {
 }

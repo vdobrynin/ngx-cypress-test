@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'ngx-accordion',
   templateUrl: 'accordion.component.html',
   styleUrls: ['accordion.component.scss'],

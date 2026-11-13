@@ -3,10 +3,11 @@ export class SmartTablePage {
     // 1. modify age based on the date  
     updateAgeByFirstName(name, age) {
         cy.get('tbody').contains('tr', name).then(tableRow => {
-            cy.wrap(tableRow).find('.nb-edit').click()
-            cy.wrap(tableRow).find('[placeholder="Age"]').clear().type(age)
-            cy.wrap(tableRow).find('.nb-checkmark').click()
-            cy.wrap(tableRow).find('td').eq(6).should('contain', age)
+            const rowIndex = tableRow.index()
+            cy.get('tbody tr').eq(rowIndex).find('.nb-edit').click()
+            cy.get('tbody tr').eq(rowIndex).find('[placeholder="Age"]').clear().type(age)
+            cy.get('tbody tr').eq(rowIndex).find('.nb-checkmark').click()
+            cy.get('tbody tr').eq(rowIndex).find('td').eq(6).should('contain', age)
         })
     }
 

@@ -24,7 +24,7 @@ describe('first test suite', () => {
         cy.get('[placeholder="Email"]')     // [name + value] for attribute 
 
         // by Entire Class Value
-        cy.get('[class="input-full-width size-medium shape-rectangle"]')
+        cy.get('input.input-full-width.size-medium.shape-rectangle')
 
         // by Two Attributes
         cy.get('[placeholder="Email"][fullwidth]')          // 2 attributes
@@ -194,13 +194,14 @@ describe('first test suite', () => {
             // date.setDate((date.getDate() + day))
             let futureDay = date.getDate()                          // change date to the day
             let futureMonth = date.toLocaleDateString('en-US', { month: 'short' })
+            let futureMonthLong = date.toLocaleDateString('en-US', { month: 'long' })
             let futureYear = date.getFullYear()
             // let dateToAssert = `Feb ${futureDay}, 2025`                 // change date to the day
             let dateToAssert = `${futureMonth} ${futureDay}, ${futureYear}` // re-write to be dynamic
 
-            cy.get('nb-calendar-navigation').invoke('attr', 'ng-reflect-date').then(dateAttribute => {
-                if (!dateAttribute.includes(futureMonth) || !dateAttribute.includes(futureYear)) {
-                    cy.get('[data-name="chevron-right"]').click()
+            cy.get('nb-card-header.calendar-navigation button').first().invoke('text').then(monthAndYear => {
+                if (!monthAndYear.includes(futureMonthLong) || !monthAndYear.includes(futureYear)) {
+                    cy.get('button.next-month').click()
                     selectDayFromCurrent(day)
                 }
                 else {
@@ -224,14 +225,14 @@ describe('first test suite', () => {
 
         // example 1
         cy.get('nav nb-select').click()
-        cy.get('.options-list').contains('Dark').click()        // '.options-list' class name
+        cy.get('.option-list').contains('Dark').click()         // '.option-list' class name
         cy.get('nav nb-select').should('contain', 'Dark')       // assertion
         // cy.get('nb-layout-header nav').should('have.css', 'background-color', 'rgb(34, 43, 69)')
 
         // example 2
         cy.get('nav nb-select').then(dropdown => {
             cy.wrap(dropdown).click()
-            cy.get('.options-list nb-option').each((listItem, index) => { // looping through 4 elements w/index
+            cy.get('.option-list nb-option').each((listItem, index) => { // looping through 4 elements w/index
                 const itemText = listItem.text().trim()
                 // const colors = {   
                 //     "Light": "rgb(255, 255, 255)",
@@ -256,10 +257,11 @@ describe('first test suite', () => {
 
         // example 1 (get the row by text )
         cy.get('tbody').contains('tr', 'Larry').then(tableRow => {
-            cy.wrap(tableRow).find('.nb-edit').click()
-            cy.wrap(tableRow).find('[placeholder="Age"]').clear().type('35')
-            cy.wrap(tableRow).find('.nb-checkmark').click()
-            cy.wrap(tableRow).find('td').eq(6).should('contain', '35')
+            const rowIndex = tableRow.index()
+            cy.get('tbody tr').eq(rowIndex).find('.nb-edit').click()
+            cy.get('tbody tr').eq(rowIndex).find('[placeholder="Age"]').clear().type('35')
+            cy.get('tbody tr').eq(rowIndex).find('.nb-checkmark').click()
+            cy.get('tbody tr').eq(rowIndex).find('td').eq(6).should('contain', '35')
         })
 
         // example 2 (get row by index)

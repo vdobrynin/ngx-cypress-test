@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NbCalendarDayCellComponent } from '@nebular/theme';
 
 @Component({
+  standalone: false,
   selector: 'ngx-day-cell',
   templateUrl: 'day-cell.component.html',
   styleUrls: ['day-cell.component.scss'],

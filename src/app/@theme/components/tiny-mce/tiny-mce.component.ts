@@ -1,6 +1,7 @@
 import { Component, OnDestroy, AfterViewInit, Output, EventEmitter, ElementRef } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'ngx-tiny-mce',
   template: '',
 })

@@ -1,38 +1,36 @@
 
 function selectGroupMenuItem(groupMenu) {
     cy.contains('a', groupMenu).then(menu => {
-        cy.wrap(menu).find('.expand-state g g').invoke('attr', 'data-name').then(attr => {
-            if (attr.includes('chevron-left')) {
-                cy.wrap(menu).click({ force: true })
-            }
-        })
+        if (menu.attr('aria-expanded') !== 'true') {
+            cy.wrap(menu).click()
+        }
     })
 }
 
 export class NavigationPage {
     formLayoutsPage() {
         selectGroupMenuItem('Forms')
-        cy.contains('Form Layouts').click()
+        cy.contains('Form Layouts').click({ force: true })
     }
 
     datepickerPage() {
         selectGroupMenuItem('Forms')
-        cy.contains('Datepicker').click()
+        cy.contains('Datepicker').click({ force: true })
     }
 
     toasterPage() {
         selectGroupMenuItem('Modal & Overlays')
-        cy.contains('Toastr').click()
+        cy.contains('Toastr').click({ force: true })
     }
 
     smartTablePage() {
         selectGroupMenuItem('Tables & Data')
-        cy.contains('Smart Table').click()
+        cy.contains('Smart Table').click({ force: true })
     }
 
     tooltipPage() {
         selectGroupMenuItem('Modal & Overlays')
-        cy.contains('Tooltip').click()
+        cy.contains('Tooltip').click({ force: true })
     }
 }
 
