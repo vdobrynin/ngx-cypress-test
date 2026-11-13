@@ -1,7 +1,5 @@
-const { initPlugin } = require('cypress-plugin-snapshots/plugin');
-
 module.exports = (on, config) => {
-    // isPercyEnabled();
-    initPlugin(on, config);
+    // cypress-plugin-snapshots is not compatible with Cypress 16 (crypto.randomBytes)
+    // initPlugin(on, config);
     return config;
 };

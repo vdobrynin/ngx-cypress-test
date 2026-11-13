@@ -1,5 +1,4 @@
 const { defineConfig } = require('cypress')
-const { initPlugin } = require('cypress-plugin-snapshots/plugin')
 
 module.exports = defineConfig({
   viewportHeight: 1200, //900, //
@@ -10,17 +9,8 @@ module.exports = defineConfig({
   pageLoadTimeout: 10000,
   waitForAnimations: true,
   experimentalWebKitSupport: false,
-  env: {
-    'cypress-plugin-snapshots': {
-      imageConfig: {
-        threshold: 0.01,
-      },
-    },
-  },
   e2e: {
-    // baseUrl: "https://playground.bondaracademy.com",
-    // baseUrl: "https://conduit.bondaracademy.com",
-    // baseUrl: "http://localhost:4200",
+    baseUrl: process.env.CYPRESS_BASE_URL || "http://localhost:4200",
     excludeSpecPattern: [
       '**/1-getting-started',
       '**/2-advanced-examples',

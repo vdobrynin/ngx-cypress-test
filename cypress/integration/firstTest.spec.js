@@ -166,16 +166,19 @@ describe('first test suite', () => {
         cy.get('[type="checkbox"]').eq(2).uncheck({ force: true }) // uncheck another one
     })
 
-    it('web date pickers ( with hardcoded days, assert property)', () => {
+    it('web date pickers ( select today, assert property)', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Datepicker').click()
 
+        const today = new Date()
+        const expectedDate = `${today.toLocaleDateString('en-US', { month: 'short' })} ${today.getDate()}, ${today.getFullYear()}`
+
         cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
             cy.wrap(input).click()
-            cy.get('.day-cell').not('.bounding-month').contains('3').click()
-            cy.wrap(input).invoke('prop', 'value').should('contain', 'Jun 3, 2025') // assertion v.1
-            cy.wrap(input).should('have.value', 'Jun 3, 2025')                     // assertion v.2 variation
+            cy.get('.day-cell').not('.bounding-month').contains(String(today.getDate())).click()
+            cy.wrap(input).invoke('prop', 'value').should('contain', expectedDate) // assertion v.1
+            cy.wrap(input).should('have.value', expectedDate)                      // assertion v.2 variation
         })
     })
 

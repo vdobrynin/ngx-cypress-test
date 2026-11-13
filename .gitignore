@@ -1,13 +1,60 @@
-# compiled output
-/dist
-/tmp
-/out-tsc
+# =========================
+# Dependencies and logs
+# =========================
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+.npm/
+.node_repl_history
+*.tgz
 
-# dependencies
-/node_modules
+# =========================
+# Angular / build output
+# =========================
+/dist/
+/out-tsc/
+/tmp/
+/.angular/
+/coverage/
+/docs/
+/typings/
+/.sass-cache/
+/connect.lock
+/libpeerconnection.log
+testem.log
+*.tsbuildinfo
 
-# IDEs and editors
-/.idea
+# Native node-gyp output
+/build/*
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.local
+.env.*.local
+cypress.env.json
+
+# =========================
+# Cypress
+# =========================
+/cypress/videos/
+/cypress/screenshots/
+/cypress/downloads/
+/cypress/results/
+/cypress/reports/
+
+# Keep visual regression baselines tracked:
+# cypress/integration/__image_snapshots__/
+# cypress/integration/__snapshots__/
+
+# =========================
+# IDE and editors
+# =========================
+/.idea/
 .project
 .classpath
 .c9/
@@ -15,29 +62,27 @@
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# VSCode: keep shared project settings
+/.vscode/*
+!/.vscode/settings.json
+!/.vscode/tasks.json
+!/.vscode/launch.json
+!/.vscode/extensions.json
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-testem.log
-/typings
-/docs
-
-# e2e
+# =========================
+# End-to-end test output
+# =========================
 /e2e/*.js
 /e2e/*.map
 
-# System Files
+# =========================
+# OS files
+# =========================
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
 Thumbs.db
-
-cypress/videos/
+ehthumbs.db
+Desktop.ini

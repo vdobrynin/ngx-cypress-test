@@ -1,25 +1,19 @@
-describe('visual test old', () => {
+describe('visual tests', () => {
 
-    it('should test snapshot', () => {
+    beforeEach('open form layouts', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
-
-        cy.contains('nb-card', 'Using the Grid').then(firstForm => {
-            cy.wrap(firstForm).toMatchImageSnapshot()   // snapshot only testing area
-            cy.document().toMatchImageSnapshot()        // for full page
-        })
+        cy.contains('nb-card', 'Using the Grid').should('be.visible')
     })
 
-    it.only('should test with Percy', () => {
-        cy.visit('/')
-        cy.contains('Forms').click()
-        cy.contains('Form Layouts').click()
+    it('should test snapshot', () => {
+        cy.percySnapshot('Form Layouts - Using the Grid')
+        cy.percySnapshot('Form Layouts')
+    })
 
-        cy.contains('nb-card', 'Using the Grid').then(firstForm => {
-            cy.wait(1000);
-            cy.percySnapshot('FormLayouts1');
-            cy.percySnapshot('FormLayouts2', { widths: [768, 992, 1200] });
-        })
+    it('should test with Percy', () => {
+        cy.percySnapshot('FormLayouts1')
+        cy.percySnapshot('FormLayouts2', { widths: [768, 992, 1200] })
     })
 })
